@@ -22,6 +22,9 @@ A user-friendly command-line OCR (Optical Character Recognition) application tha
   - pdf2image
   - Pillow
   - PyPDF2
+  - argparse
+  - tqdm
+  - reportlab
 
 ## Installation
 
@@ -37,16 +40,45 @@ A user-friendly command-line OCR (Optical Character Recognition) application tha
    # Download and install from: https://github.com/UB-Mannheim/tesseract/wiki
    ```
 
-2. Install Python dependencies:
+2. Set up Python environment:
+
+   **Option 1: Using a virtual environment (Recommended)**
    ```bash
-   pip install -r requirements.txt
+   # Install python3-venv if not already installed
+   # For Ubuntu/Debian
+   sudo apt-get install python3-venv python3-full
+
+   # Create and activate virtual environment
+   python3 -m venv venv
+   source venv/bin/activate  # On Linux/macOS
+   # or
+   .\venv\Scripts\activate  # On Windows
    ```
+
+   **Option 2: Using pipx (Alternative for Debian/Ubuntu)**
+   ```bash
+   # Install pipx
+   sudo apt-get install pipx
+   pipx ensurepath
+   ```
+
+3. Install Python dependencies:
+   ```bash
+   # If using virtual environment (Option 1)
+   pip install -r requirements.txt
+
+   # If using pipx (Option 2)
+   pipx install -r requirements.txt
+   ```
+
+   Note: If you encounter "externally-managed-environment" error on Debian/Ubuntu, please use one of the above options instead of installing packages system-wide.
 
 ## Usage
 
 The application can be used in two ways:
 
-1. Interactive Mode:
+1. Interactive Mode: 
+- Esnure you use the full file path for interactive mode: example /home/user/Documents/file.png (works with Jpeg, txt and PDFs)
    ```bash
    python ocr_app.py
    ```
